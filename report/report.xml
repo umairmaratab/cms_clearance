@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<odoo>
+		<record id="paperformat_fee_landscape" model="report.paperformat">
+			<field name="name">Fee Report Format Landscape</field>
+			<field name="default" eval="True"/>
+			<field name="format">A4</field>
+			<field name="page_height">0</field>
+			<field name="page_width">0</field>
+			<field name="orientation">Landscape</field>
+			<field name="margin_top">0</field>
+			<field name="margin_bottom">0</field>
+			<field name="margin_left">0</field>
+			<field name="margin_right">0</field>
+			<field name="header_line" eval="False"/>
+			<field name="header_spacing">3</field>
+			<field name="dpi">90</field>
+		</record>
+		
+		<record id="paperformat_fee_portrait" model="report.paperformat">
+			<field name="name">Fee Report Format Landscape 2</field>
+			<field name="default" eval="True"/>
+			<field name="format">A4</field>
+			<field name="page_height">0</field>
+			<field name="page_width">0</field>
+			<field name="orientation">Portrait</field>
+			<field name="margin_top">05</field>
+			<field name="margin_bottom">05</field>
+			<field name="margin_left">0</field>
+			<field name="margin_right">0</field>
+			<field name="header_line" eval="False"/>
+			<field name="header_spacing">3</field>
+			<field name="dpi">90</field>
+		</record>
+		
+        <report id="report_qweb_1_id"
+                string="Report (1)"
+                model="cms.student"
+                report_type = "qweb-pdf"
+                file="cms_student.report_template_1_id"
+                name="cms_student.report_template_1_id"/>
+
+        <report id="report_qweb_2_id"
+                string="Report (Exp. Grad.)"
+                model="cms.student"
+                report_type = "qweb-pdf"
+                file="cms_student.report_template_2_id"
+                name="cms_student.report_template_2_id" 
+				paperformat="paperformat_fee_landscape"/>
+
+        <report id="report_qweb_3_id"
+                string="Report"
+                model="cms.clearance"
+                report_type = "qweb-pdf"
+                file="cms_student.report_template_3_id"
+                name="cms_student.report_template_3_id" 
+				paperformat="paperformat_fee_landscape"/>
+</odoo>

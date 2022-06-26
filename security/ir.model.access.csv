@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cms_student_admin,cms.student.admin,model_cms_student,cms_student.group_cms_student_administrator_id,1,1,1,1
+access_cms_student_all,cms.student.all,model_cms_student,,1,1,1,0
+
+access_cms_clearance_admin,cms.clearance.admin,model_cms_clearance,cms_student.group_cms_student_administrator_id,1,1,1,1
+access_cms_clearance_all,cms.clearance.all,model_cms_clearance,,1,1,1,0
+
+
+
+
+access_cms_department_admin,cms.department.admin,model_cms_department,cms_student.group_cms_student_administrator_id,1,1,1,1
+access_cms_department_all,cms.department.all,model_cms_department,,1,1,1,0
+
+
+access_cms_wizard_student_report_all,cms.wizard.student.report.all,model_cms_wizard_student_report,,1,1,1,1
+

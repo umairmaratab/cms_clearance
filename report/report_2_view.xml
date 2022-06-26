@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<odoo>
+
+    <!-- Main template -->
+	<template id="report_template_2_id">
+	    <t t-call="web.html_container">
+	    <div class="page">
+	    <!-- <t t-call="web.external_layout">  -->
+	    	<table width="100%" style="border: none;">
+            	<tr style="border:none">
+            		<td width="100%">
+						<t t-call="cms_student.report_template_2_document_id" t-lang="data['company_lang']"/>
+					</td>
+				</tr>
+			</table>
+	    </div>
+		</t>
+	    <!-- </t>  -->
+	</template>
+    
+    <!-- Translatable template -->
+	<template id="report_template_2_document_id">
+    <div class="oe_structure"/>
+    <table width="100%" style="border: none" class="table table-sm o_main_table" cellspacing="0">
+		<thead>
+			<tr>
+		    <td colspan="6">
+		     	<table width="100%" style="padding-top:0px;padding-bottom:10px;cellpadding:20px;">
+			       	<tr>
+			       	<td width="13%" style="float: left">
+			       		<img t-if="data['company_logo']" t-att-src="image_data_uri(data['company_logo'])" style="padding: 0px; margin: 0px; height: 140px;" class="float-left" alt="Logo"/>
+					</td>
+					
+					<td width="87%">
+						<br/>
+			       		<br/>
+			       		<br/>
+			       		<div style="font-size:30px;text-align:left; padding:0px;font-weight:bold" t-esc="data['company_name'].upper()"/>
+						<div style="font-size:20px;text-align:left; padding:0px" t-esc="get_company_name()"/>
+			       	</td>
+					</tr>
+				</table>
+		    	
+		    	<table width="100%" style="padding-top:0px;padding-bottom:10px;cellpadding:20px;">
+			       	<tr style="border: 2px solid black;">
+						<td width="100%">
+						<div style="font-size:24px;text-align:center;font-weight:bold"><u>List of Enrolled Students</u> </div>
+						</td>
+			      	</tr>
+				</table>
+
+		    </td>
+		  	</tr>
+			<tr style="border: 2px solid black; background-color: #BCDEEB">
+	 			<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="12%"><strong>Admission No.</strong> </td>
+		     	<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="30%"><strong>Student Name (2)</strong> </td>
+				<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="30%"> <strong>Father Name (2)</strong> </td> 
+				<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <strong>Date of Birth</strong> </td> 
+				<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <strong>Admission Date</strong> </td>
+				<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <strong>Exp. Graduation Date</strong> </td> 
+			</tr>
+		</thead>
+	   	<tbody>
+	   		<tr t-foreach="docs" t-as="o">
+               	<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="12%"><span t-esc="o.admission_no"/></td>
+	           	<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="30%"><span t-esc="o.name"/></td>
+	           	<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="30%"><span t-esc="o.father_name"/></td>
+				<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="14%"><span t-esc="o.date_of_birth"/></td>
+				<t t-if="o.admission_date">
+					<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <span t-esc="o.admission_date"/> </td>
+				</t>
+				<t t-if="o.grad_date">
+					<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <span t-esc="o.grad_date"/> </td>
+				</t>
+			</tr>
+			<tr t-foreach="docs" t-as="o">
+			    <td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="12%"><span t-esc="o.admission_no"/></td>
+	           	<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="30%"><span t-esc="o.name"/></td>
+	           	<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="30%"><span t-esc="o.father_name"/></td>
+				<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="14%"><span t-esc="o.date_of_birth"/></td>
+				<t t-if="o.admission_date">
+					<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <span t-esc="o.admission_date"/> </td>
+				</t>
+				<t t-if="o.grad_date">
+					<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <span t-esc="o.grad_date"/> </td>
+				</t>
+	       	</tr>
+			<tr t-foreach="docs" t-as="o">
+			    <td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="12%"><span t-esc="o.admission_no"/></td>
+	           	<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="30%"><span t-esc="o.name"/></td>
+	           	<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="30%"><span t-esc="o.father_name"/></td>
+				<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="14%"><span t-esc="o.date_of_birth"/></td>
+				<t t-if="o.admission_date">
+					<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <span t-esc="o.admission_date"/> </td>
+				</t>
+				<t t-if="o.grad_date">
+					<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <span t-esc="o.grad_date"/> </td>
+				</t>
+	       	</tr>
+			<tr t-foreach="docs" t-as="o">
+			    <td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="12%"><span t-esc="o.admission_no"/></td>
+	           	<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="30%"><span t-esc="o.name"/></td>
+	           	<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="30%"><span t-esc="o.father_name"/></td>
+				<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="14%"><span t-esc="o.date_of_birth"/></td>
+				<t t-if="o.admission_date">
+					<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <span t-esc="o.admission_date"/> </td>
+				</t>
+				<t t-if="o.grad_date">
+					<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <span t-esc="o.grad_date"/> </td>
+				</t>
+	       	</tr>
+			<tr t-foreach="docs" t-as="o">
+			    <td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="12%"><span t-esc="o.admission_no"/></td>
+	           	<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="30%"><span t-esc="o.name"/></td>
+	           	<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="30%"><span t-esc="o.father_name"/></td>
+				<td style="padding=5px;border: 1px solid black;font-size: 16px;padding: 5px;" width="14%"><span t-esc="o.date_of_birth"/></td>
+				<t t-if="o.admission_date">
+					<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <span t-esc="o.admission_date"/> </td>
+				</t>
+				<t t-if="o.grad_date">
+					<td style="padding-top:5px;padding-bottom:10px;border: 2px solid black" width="14%"> <span t-esc="o.grad_date"/> </td>
+				</t>
+	       	</tr>
+		</tbody>
+		</table>
+		
+
+	<table width="100%" style="border:none">
+        <tr>
+        	<td width="22%" style="border:none;font-size:14px;" align="left">Issued Date: </td>
+        		 
+        	<td width="24%" style="border:none;font-size:14px;" align="left">
+				<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%b-%Y')"/>
+			</td>
+				
+        	<td width="20%" style="border:none;font-size:14px;" align="left">Issued By: </td>
+        	<td width="34%" style="border:none;font-size:14px;" align="left">
+        		<span t-field="request.env.user.name"/>
+        	</td>
+      	</tr>
+   	</table>
+
+	</template>
+</odoo>

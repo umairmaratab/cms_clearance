@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_cms_department_form_id" model="ir.ui.view">
+        <field name="name">cms.department.form</field>
+        <field name="model">cms.department</field>
+        <field name="arch" type="xml">
+            <form string="Department Information">
+                <sheet>
+                    <div>
+                        <group>
+                            <field name="name"/>
+                        </group>
+
+                        <notebook>
+                            <page string="Students">
+                                <field name="student_ids"/>
+                            </page>
+                        </notebook>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View of Department -->
+    <record id="view_cms_department_tree_id" model="ir.ui.view">
+        <field name="name">student.department.tree</field>
+        <field name="model">cms.department</field>
+        <field name="arch" type="xml">
+            <tree string="Department Information" create="true" delete="false">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+<!--    Click Action for Department menu-->
+    <record id="action_cms_department_id" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="res_model">cms.department</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+</odoo>

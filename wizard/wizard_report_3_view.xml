@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<odoo>
+    <!-- Form View Of Defaulter Wizard -->
+    <record id="view_cms_wizard_report_form_id" model="ir.ui.view">
+        <field name="name">cms.wizard.student.report.form</field>
+        <field name="model">cms.wizard.student.report</field>
+        <field name="arch" type="xml">
+            <form string="Print Report ">
+    			<group>
+					<field name="from_date"/>
+					<field name="to_date"/>
+                
+   				</group>
+   				<footer>
+                    <button class="btn btn-sm btn-default fa fa-book" name='print_report3' type='object' string='Print Report (3)'/>
+                </footer>
+           </form>
+        </field>
+    </record>
+    
+    <!-- Act Window For Action Of Student Report-->
+    <record id="action_wizard_report_3_id" model="ir.actions.act_window">
+        <field name="name">Print Report</field>
+        <field name="type">ir.actions.act_window</field>
+    	<field name="res_model">cms.wizard.student.report</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_cms_wizard_report_form_id"/>
+        <field name="target">new</field>
+    </record>        
+
+</odoo>

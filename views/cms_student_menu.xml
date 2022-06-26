@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- Top Menu CMS -->
+    <menuitem id="menu_main_campus_id" name="Clearance" web_icon="cms_student,static/description/icon.png" sequence="1"
+    		groups="cms_student.group_cms_student_officer_id,cms_student.group_cms_student_manager_id,cms_student.group_cms_student_administrator_id"/>
+    
+    <!-- Menu Student/ Department -->
+    <menuitem id="menu_cms_student_main_id" name="Clearance Details" parent="menu_main_campus_id" sequence="1"
+        	groups="cms_student.group_cms_student_officer_id,cms_student.group_cms_student_manager_id,cms_student.group_cms_student_administrator_id"/>
+
+	<menuitem id="menu_cms_department_1" name="Department" parent="menu_cms_student_main_id" action="action_cms_department_id" sequence="20"
+		groups="cms_student.group_cms_student_officer_id,cms_student.group_cms_student_manager_id,cms_student.group_cms_student_administrator_id"/>
+
+	<menuitem id="menu_cms_student_1" name="Student" parent="menu_cms_student_main_id" action="action_cms_student_id" sequence="20"
+	    	groups="cms_student.group_cms_student_officer_id,cms_student.group_cms_student_manager_id,cms_student.group_cms_student_administrator_id"/>
+
+
+	<menuitem id="menu_cms_clearance_1" name="Clearance" parent="menu_cms_student_main_id" action="action_cms_clearance_id" sequence="2"
+	    	groups="cms_student.group_cms_student_officer_id,cms_student.group_cms_student_manager_id,cms_student.group_cms_student_administrator_id"/>
+
+
+    <!-- Menu Reports -->
+    <menuitem id="menu_cms_student_report_id" name="CMS Reports" parent="menu_main_campus_id" sequence="2" 
+        	groups="cms_student.group_cms_student_officer_id,cms_student.group_cms_student_manager_id,cms_student.group_cms_student_administrator_id"/>
+
+    <menuitem id="menu_cms_student_report_3_id" name="Print Report (3)" parent="menu_cms_student_report_id" action="action_wizard_report_3_id" sequence="21"
+			groups="cms_student.group_cms_student_officer_id,cms_student.group_cms_student_manager_id,cms_student.group_cms_student_administrator_id"/>
+
+</odoo>

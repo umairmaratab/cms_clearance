@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- Form View 1 Of Student's Profiles -->
+    <record id="view_cms_clearance_form_id" model="ir.ui.view">
+        <field name="name">cms.clearance.form</field>
+        <field name="model">cms.clearance</field>
+        <field name="arch" type="xml">
+            <form string="Clearance Information">
+                <header>
+
+
+<!--                    state = fields.Selection([('draft', 'Draft'), ('academics', 'Academics'), ('transport', 'Transport'),-->
+<!--                              ('hostel', 'Hostel'),('accounts', 'Accounts'),-->
+<!--                              ('cancelled', 'Cancelled')], 'Status', readonly=True, default="draft")-->
+
+                    <button class="oe_stat_button" name="set_to_draft" string="Draft" type="object" icon="fa-check" states="cancelled" groups="cms_student.group_cms_student_officer_id,cms_student.group_cms_student_manager_id,cms_student.group_cms_academics_officer_id,cms_student.group_cms_transport_officer_id,cms_student.group_cms_accounts_officer_id,cms_student.group_cms_hostel_officer_id"/>
+                    <button class="oe_stat_button" name="set_to_academics" string="Forward to Academics" type="object" icon="fa-check" states="draft" groups="cms_student.group_cms_student_officer_id"/>
+                    <button class="oe_stat_button" name="set_to_transport" string="Forward to Transport" type="object" icon="fa-check" states="academics" groups="cms_student.group_cms_academics_officer_id"/>
+                    <button class="oe_stat_button" name="set_to_hostel" string="Forward to Hostel" type="object" icon="fa-check" states="transport" groups="cms_student.group_cms_transport_officer_id"/>
+                    <button class="oe_stat_button" name="set_to_approved" string="Approved" type="object" icon="fa-check" states="accounts" groups="cms_student.group_cms_accounts_officer_id"/>
+
+                    <button class="oe_stat_button" name="set_to_accounts" string="Forward to Accounts" type="object" icon="fa-check" states="hostel" groups="cms_student.group_cms_hostel_officer_id"/>
+
+
+
+<!--                    <button class="oe_stat_button" name="set_to_transport" string="Transport" type="object" icon="fa-check" states="transport" groups="cms_student.group_cms_student_manager_id"/>-->
+<!--                    <button class="oe_stat_button" name="set_to_hostel" string="Hostel" type="object" icon="fa-check" states="hostel" groups="cms_student.group_cms_student_officer_id"/>-->
+<!--                    <button class="oe_stat_button" name="set_to_accounts" string="Accounts" type="object" icon="fa-check" states="accounts" groups="cms_student.group_cms_student_officer_id,cms_student.group_cms_student_manager_id"/>-->
+                    <button class="oe_stat_button" name="set_to_cancelled" string="Cancel" type="object" icon="fa-check" states="academics,hostel,transport,accounts" groups="cms_student.group_cms_student_officer_id"/>
+
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,academics,transport,hostel,accounts,cancelled" attrs="{'invisible':[('active','=',False)]}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+
+                            <field name="name" placeholder="Student Name" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            </h1>
+                        <h1>
+                            <field name="registration_no" placeholder="Registration No." attrs="{'readonly':[('state','!=','draft')]}"/>
+
+                        </h1>
+                     </div>
+                     
+                     <div>
+						<group colspan="4" col="4" string="Clearance form">
+
+                            <field name="is_cleared_from_academics" attrs="{'readonly':[('state','!=','academics')]}"/>
+                            <field name="is_cleared_from_transport" attrs="{'readonly':[('state','!=','transport')]}"/>
+                            <field name="is_cleared_from_hostel" attrs="{'readonly':[('state','!=','hostel')]}"/>
+                            <field name="is_cleared_from_accounts" attrs="{'readonly':[('state','!=','accounts')]}"/>
+
+
+
+<!--							<field name="father_name" attrs="{'readonly':[('state','!=','draft')]}"/>-->
+<!--							<field name="admission_no"/>-->
+<!--							<field name="contact_mobile" attrs="{'readonly':[('state','!=','draft')]}"/>-->
+<!--							<field name="registration_no" attrs="{'readonly':[('state','!=','draft')]}"/>-->
+<!--							<field name="contact_phone" attrs="{'readonly':[('state','!=','draft')]}"/>-->
+<!--							<field name="gender" attrs="{'readonly':[('state','!=','draft')]}"/>-->
+<!--							<field name="admission_date" attrs="{'readonly':[('state','!=','draft')]}"/>-->
+<!--							&lt;!&ndash;  <field name="grad_date"/>&ndash;&gt;-->
+<!--							<field name="date_of_birth" attrs="{'readonly':[('state','!=','draft')]}"/>-->
+<!--							<field name="user_id"/>-->
+<!--							<field name="department_id"/>-->
+<!--							<field name="age"/>-->
+							<field name="active" attrs="{'readonly':[('state','!=','draft')]}"/>
+						</group>
+
+                         <h1>
+                             <field name="is_cleared" />
+                         </h1>
+
+						
+						<notebook>
+							<page string="Remarks">
+								<field name="remark"/>
+							</page>
+							<!-- <page string="Employees">
+								<field name="employee_ids"/>
+							</page> -->
+						</notebook>
+							
+					</div>
+				</sheet>
+			</form>
+		</field>
+    </record>
+
+    <!-- Tree View of Student -->
+    <record id="view_cms_clearance_tree_id" model="ir.ui.view">
+        <field name="name">cms.clearance.tree</field>
+        <field name="model">cms.clearance</field>
+        <field name="arch" type="xml">
+            <tree string="Clearance Information" create="true" delete="false">
+				<field name="name"/>
+<!--                <field name="father_name"/>-->
+<!--                <field name="admission_no"/>-->
+				<field name="registration_no"/>
+<!--				<field name="gender"/>-->
+<!--				<field name="date_of_birth"/>-->
+<!--				<field name="admission_date"/>-->
+				<!--  <field name="grad_date"/>-->
+                <field name="is_cleared_from_academics"/>
+                <field name="is_cleared_from_transport"/>
+                <field name="is_cleared_from_accounts"/>
+                <field name="is_cleared_from_hostel"/>
+
+
+<!--				<field name="age"/>-->
+<!--				<field name="contact_phone"/>-->
+<!--				<field name="contact_mobile"/>-->
+<!--				<field name="user_id" invisible="1"/>-->
+<!--				<field name="state" invisible="1"/>-->
+<!--				<field name="active" invisible="1"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Calendar View Of Student -->
+<!--    <record id="view_cms_student_calendar_id" model="ir.ui.view">-->
+<!--        <field name="name">cms.student.calendar</field>-->
+<!--        <field name="model">cms.student</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <calendar color="name" date_start="admission_date" date_stop="date_of_birth" string="Admission">-->
+<!--                <field name="name"/>-->
+<!--                <field name="admission_date"/>-->
+<!--				&lt;!&ndash;  <field name="grad_date"/>&ndash;&gt;-->
+<!--                <field name="gender"/>-->
+<!--            </calendar>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <!-- Search View of Student -->
+<!--    <record id="view_cms_student_search_id" model="ir.ui.view">-->
+<!--        <field name="name">cms.student.search</field>-->
+<!--        <field name="model">cms.student</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <search string="Student Information">-->
+<!--                <group col="10" colspan="4">-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="father_name"/>-->
+<!--                    <field name="registration_no"/>-->
+<!--					<field name="gender"/>-->
+<!--					<field name="date_of_birth"/>-->
+<!--					<field name="admission_date"/>-->
+<!--					&lt;!&ndash;  <field name="grad_date"/>&ndash;&gt;-->
+<!--					<field name="contact_phone"/>-->
+<!--					<field name="contact_mobile"/>-->
+<!--					<field name="state"/>-->
+
+<!--                </group>-->
+<!--                <newline />-->
+<!--                <group expand="0" string="Group By" colspan="12" col="10">-->
+<!--                    <filter name="admission_date" string="Admission Date" help="By Admission Date" context="{'group_by':'admission_date'}" />-->
+<!--                    <filter name="gender" string="Gender" help="By Gender" context="{'group_by':'gender'}" />-->
+<!--                    <filter name="state" string="State" help="By State" context="{'group_by':'state'}"/>-->
+<!--                </group>-->
+
+<!--                <separator/>-->
+<!--                <filter name="draft" string="Draft" domain="[('state','=', 'draft')]" help="Admission In Draft State"/>-->
+<!--                <filter name="done" string="Done" domain="[('state','=', 'done')]" help="Admission In Done State"/>-->
+<!--                <filter name="cancelled" string="Cancelled" domain="[('state','=', 'cancelled')]" help="Admission In Cancelled State"/>-->
+<!--            </search>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <!--    Click Action for Student menu -->
+    <record id="action_cms_clearance_id" model="ir.actions.act_window">
+        <field name="name">Clearance</field>
+        <field name="domain">[('active','=',True)]</field>
+        <field name="res_model">cms.clearance</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+
+
+
+ </odoo>
